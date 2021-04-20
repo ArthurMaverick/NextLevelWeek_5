@@ -1,16 +1,19 @@
-import { AppProps } from 'next/app'
-import { ThemeProvider } from 'styled-components'
-import { GlobalStyles } from '../styles/globals'
-import { theme } from '../styles/theme'
+import '../styles/globals.scss'
 
+import { AppProps } from 'next/app'
+import { Header, Player } from '../components'
+
+import styles from '../styles/app.module.scss'
 function MyApp ({ Component, pageProps }: AppProps) {
   return (
-  <>
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-      <GlobalStyles/>
-    </ThemeProvider>
-  </>
+      <div className={styles.wrapper}>
+        <main>
+          <Header/>
+          <Component {...pageProps} />
+        </main>
+        <Player/>
+
+      </div>
   )
 }
 
