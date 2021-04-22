@@ -6,7 +6,7 @@ export class Usercontroller {
   async create (req:Request, res: Response):Promise<Response> {
     const { email } = req.body
 
-    const userMail = await (new UserServices().create({ email }))
+    const userMail = await (new UserServices().create(email))
     return res.json(userMail)
   }
 }
