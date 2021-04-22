@@ -9,8 +9,8 @@ import setupIo from './io'
 
 dbConnection()
 const app = express()
-const http = createServer(app) // create a http protocol
-const io = new Server(http) // create a ws protocol
+const http = createServer(app)
+const io = new Server(http)
 
 setupIo(io)
 setupStatic(app)
