@@ -7,6 +7,7 @@ import { convertoToString } from '../../util/convertyDurationToTimeString'
 import styles from './episode.module.scss'
 import Image from 'next/image'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import { usePlayer } from '../../contexAPI/PlayerContext'
 
 interface Episode {
   id: string
@@ -24,6 +25,7 @@ interface EpisodeProps {
 }
 
 export default function DinamicEpisodes({ episode }: EpisodeProps): JSX.Element {
+  const { play } = usePlayer()
   return (
     <div className={styles.episode}>
       <div className={styles.thumbnailContainer}>
@@ -38,7 +40,7 @@ export default function DinamicEpisodes({ episode }: EpisodeProps): JSX.Element 
           src={episode.thumbnail}
           objectFit="cover"
         />
-        <button type="button">
+        <button type="button" onClick={() => play(episode)}>
           <img src="/play.svg" alt="Tocar episódio" />
         </button>
       </div>
